@@ -19,8 +19,31 @@ namespace Pixels2D
 		TEXTURE
 	};
 
-	struct Glyph
+	class Glyph
 	{
+	public:
+		Glyph();
+		Glyph(const glm::vec4 &destRect, const glm::vec4 &uvRect, const GLuint &Texture, const float &Depth, const ColorRGBA8 &color)
+			: texture(Texture), depth(Depth)
+		{
+			topLeft.setColor(color.r, color.g, color.b, color.a);
+			topLeft.setPosition(destRect.x, destRect.y + destRect.w);
+			topLeft.setUV(uvRect.x, uvRect.y + uvRect.w);
+
+			topLeft.setColor(color.r, color.g, color.b, color.a);
+			bottomLeft.setPosition(destRect.x, destRect.y);
+			bottomLeft.setUV(uvRect.x, uvRect.y);
+
+			topLeft.setColor(color.r, color.g, color.b, color.a);
+			bottomRight.setPosition(destRect.x + destRect.z, destRect.y);
+			bottomRight.setUV(uvRect.x + uvRect.z, uvRect.y);
+
+			topLeft.setColor(color.r, color.g, color.b, color.a);
+			topRight.setPosition(destRect.x + destRect.z, destRect.y + destRect.w);
+			topRight.setUV(uvRect.x + uvRect.z, uvRect.y + uvRect.w);
+		}
+
+	public:
 		GLuint texture;
 		float depth;
 
@@ -32,14 +55,13 @@ namespace Pixels2D
 
 	class RenderBatch
 	{
-		public:
-			RenderBatch(const GLuint &aOffset, const GLuint &aNumVertices, const GLuint &aTexture)
-				: offset(aOffset), numVertices(aNumVertices), texture(aTexture)
-			{}
+	public:
+		RenderBatch(const GLuint &aOffset, const GLuint &aNumVertices, const GLuint &aTexture)
+			: offset(aOffset), numVertices(aNumVertices), texture(aTexture) {}
 
-			GLuint offset;
-			GLuint numVertices;
-			GLuint texture;
+		GLuint offset;
+		GLuint numVertices;
+		GLuint texture;
 	};
 
 	class SpriteBatch
@@ -49,15 +71,15 @@ namespace Pixels2D
 		~SpriteBatch();
 
 		void init();
-		
+
 		void begin(const GlyphSortType &sortType = GlyphSortType::TEXTURE);
 		void end();
 
 		// x and y for position; z and w for dimensions
-		void draw(const glm::vec4 &destRect, const glm::vec4 &uvRect, const GLuint &texture, const float &depth, const Color &color);
+		void draw(const glm::vec4 &destRect, const glm::vec4 &uvRect, const GLuint &texture, const float &depth, const ColorRGBA8 &color);
 
 		void renderBatch();
-	
+
 	private:
 		void createVertexArray();
 		void createRenderBatches();
@@ -73,7 +95,11 @@ namespace Pixels2D
 
 		GlyphSortType _sortType;
 
-		std::vector<Glyph*> _glyphs;
+		// using this just for sorting
+		std::vector<Glyph*> _glyphPointers;
+		// these are going to be the actual glyphs
+		std::vector<Glyph> _glyphs;
+
 		std::vector<RenderBatch> _renderBatches;
 	};
 }
