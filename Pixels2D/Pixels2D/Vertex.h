@@ -8,38 +8,32 @@ namespace Pixels2D
 	// xy
 	struct Position
 	{
+		Position() : x(0.0f), y(0.0f) {}
+		Position(const float &X, const float &Y) : x(X), y(Y) {}
+
 		float x;
 		float y;
-
-		// helper position setting function
-		void setPosition(const float &x, const float &y)
-		{
-			this->x = x;
-			this->y = y;
-		}
 	};
 
 	// rgba
-	struct Color
+	struct ColorRGBA8
 	{
+		ColorRGBA8() : r(0), g(0), b(0), a(0) {}
+		ColorRGBA8(const GLubyte &R, const GLubyte &G, const GLubyte &B, const GLubyte &A)
+			: r(R), g(G), b(B), a(A) {}
+
 		GLubyte r;
 		GLubyte g;
 		GLubyte b;
 		GLubyte a;
-
-		// helper color setting function
-		void setColor(const GLubyte &r, const GLubyte &g, const GLubyte &b, const GLubyte &a)
-		{
-			this->r = r;
-			this->g = g;
-			this->b = b;
-			this->a = a;
-		}
 	};
 
 	// uv
 	struct UV
 	{
+		UV() : u(0.0f), v(0.0f) {}
+		UV(const float &U, const float &V) : u(U), v(V) {}
+
 		float u;
 		float v;
 	};
@@ -52,7 +46,7 @@ namespace Pixels2D
 		// position coordiante - 2D
 		Position position;
 		// 4 bytes for r g b a color
-		Color color;
+		ColorRGBA8 color;
 		// UV texture coordinate
 		UV uv;
 
