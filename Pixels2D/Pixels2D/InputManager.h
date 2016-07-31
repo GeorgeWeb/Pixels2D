@@ -12,8 +12,15 @@ namespace Pixels2D
 		InputManager();
 		~InputManager();
 
+		void update();
+
 		void pressKey(const unsigned int &keyID);
 		void releaseKey(const unsigned int &keyID);
+
+		// returns true if key is is held down
+		bool isKeyDown(const unsigned int &keyID);
+
+		// returns true if key was just pressed
 		bool isKeyPressed(const unsigned int &keyID);
 
 		// setters
@@ -23,7 +30,11 @@ namespace Pixels2D
 		inline const glm::vec2 &getMouseCoords() const { return _mouseCoords; }
 
 	private:
+		bool wasKeyDown(const unsigned int &keyID);
+
+	private:
 		std::unordered_map<unsigned int, bool> _keyMap;
+		std::unordered_map<unsigned int, bool> _previousKeyMap;
 		glm::vec2 _mouseCoords;
 	};
 }
