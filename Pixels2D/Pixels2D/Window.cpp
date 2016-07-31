@@ -1,6 +1,8 @@
 #include "Window.h"
 #include "Errors.h"
 
+#include <SDL/SDL_image.h>
+
 #include <iostream>
 
 using namespace Pixels2D;
@@ -29,6 +31,11 @@ const int &Window::create(const std::string &windowTitle, const unsigned int &sc
 	// check for window errors
 	if (_sdlWindow == nullptr)
 		Errors::fatalError("SDL Window could not be created!");
+
+	// create icon
+	SDL_Surface *surface = IMG_Load("Icon/game.ico");
+	// attach the icon to the window pointer
+	SDL_SetWindowIcon(_sdlWindow, surface);
 
 	// store the SDL_GL context
 	SDL_GLContext glContext = SDL_GL_CreateContext(_sdlWindow);
