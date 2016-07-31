@@ -1,0 +1,10 @@
+The following textures are brought to you by the artist: Andreas Ressl
+All the copyright goes to him.
+Just keep that credits.txt file in your project and you are free to use the textures.
+
+Textures:
+glass.png
+light_bricks.png
+red_bricks.png
+
+Artist: Andreas Ressl
