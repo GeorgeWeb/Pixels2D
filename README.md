@@ -1,1 +1,3 @@
 # Pixels2D
+### A 2D experimental game engine
+More to come...
