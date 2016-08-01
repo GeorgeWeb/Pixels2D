@@ -22,11 +22,11 @@ namespace Pixels2D
 		void unuse();
 
 	private:
-		GLuint _programID;
-		GLuint _vertexShaderID;
-		GLuint _fragmentShaderID;
+		GLuint m_programID;
+		GLuint m_vertexShaderID;
+		GLuint m_fragmentShaderID;
 
-		int _numAttributes;
+		int m_numAttributes;
 
 	private:
 		// compiles a single shader file

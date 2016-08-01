@@ -1,6 +1,8 @@
 #include "MainGame.h"
 
 #include <Pixels2D/Pixels2D.h>
+#include <Pixels2D/ResourceManager.h>
+#include <Pixels2D/GLTexture.h>
 
 #include <SDL/SDL.h>
 #include <iostream>
@@ -18,6 +20,10 @@ void MainGame::run() {
 	// call the initialized systems
 	initSystems();
 	
+	/* initialize _spriteBatch to render */
+	_spriteBatch.init();
+	_spriteBatch.begin();
+
 	// call the main game loop
 	gameLoop();
 }
@@ -55,11 +61,18 @@ void MainGame::gameLoop()
 {	
    // IMPLEMENT THIS!
 
+   // zoom out the camera by 2x
+	const float CAMERA_SCALE = 1.0f / 2.0f;
+	_camera.setScale(CAMERA_SCALE);
+
    // main loop
 	while (_gameState == GameState::PLAY)
 	{
 		// keyboard/mouse input handling
 		processInput();
+
+		// set camera position
+		_camera.setPosition(glm::vec2(_screenWidth, _screenHeight));
 
 		// updates the main camera
 		_camera.update();
@@ -109,6 +122,39 @@ void MainGame::drawGame()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     // IMPLEMENT THIS!
+
+	_textureProgram.use();
+
+	glActiveTexture(GL_TEXTURE0);
+
+	// make sure the shader uses texture 0
+	GLint textureUniform = _textureProgram.getUniformLocation("mySampler");
+	glUniform1i(textureUniform, 0);
+
+	// get the (projection) camera matrix 
+	glm::mat4 cameraMatrix = _camera.getCameraMatrix();
+	GLint pUniform = _textureProgram.getUniformLocation("P");
+	glUniformMatrix4fv(pUniform, 1, GL_FALSE, &cameraMatrix[0][0]);
+
+	/* initialize texture data => */
+	// set uv rect
+	glm::vec4 uvRect(0.0f, 0.0f, 1.0f, 1.0f);
+	// set color
+	Pixels2D::ColorRGBA8 color(255, 255, 255, 255);
+	// set dest rect
+	glm::vec4 destRect(0, 0, 1650, 1200);
+	// set texture
+	static Pixels2D::GLTexture texture = Pixels2D::ResourceManager::getTexture("Textures/light_bricks.png");
+	// set depth
+	float depth = 0.0f;
+
+	/* draw texture => */
+	_spriteBatch.draw(destRect, uvRect, texture.id, depth, color);
+
+	_spriteBatch.end();
+	_spriteBatch.renderBatch();
+	
+	_textureProgram.unuse();
    
     // swap our buffer and draw everything to the screen!
     _window.swapBuffer();

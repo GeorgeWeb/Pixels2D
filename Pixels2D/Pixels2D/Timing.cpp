@@ -15,12 +15,12 @@ void FPSLimiter::init(const float &maxFPS)
 
 void FPSLimiter::setMaxFPS(const float &maxFPS)
 {
-	_maxFPS = maxFPS;
+	m_maxFPS = maxFPS;
 }
 
 void FPSLimiter::beginFrame()
 {
-	_startTicks = SDL_GetTicks();
+	m_startTicks = SDL_GetTicks();
 }
 
 const float &FPSLimiter::endFrame()
@@ -28,11 +28,11 @@ const float &FPSLimiter::endFrame()
 	calculateFPS();
 
 	// limit the FPS to _maxFPS
-	float frameTicks = SDL_GetTicks() - _startTicks;
-	if (1000.0f / _maxFPS > frameTicks)
-		SDL_Delay(1000.0f / _maxFPS - frameTicks);
+	float frameTicks = SDL_GetTicks() - m_startTicks;
+	if (1000.0f / m_maxFPS > frameTicks)
+		SDL_Delay(1000.0f / m_maxFPS - frameTicks);
 
-	return _fps;
+	return m_fps;
 }
 
 void FPSLimiter::calculateFPS()
@@ -47,8 +47,8 @@ void FPSLimiter::calculateFPS()
 
 	currTicks = SDL_GetTicks();
 
-	_frameTime = currTicks - prevTicks;
-	frameTimes[currentFrame % NUM_SAMPLES] = _frameTime;
+	m_frameTime = currTicks - prevTicks;
+	frameTimes[currentFrame % NUM_SAMPLES] = m_frameTime;
 
 	prevTicks = currTicks;
 
@@ -69,7 +69,7 @@ void FPSLimiter::calculateFPS()
 	frameTimeAverage /= count;
 
 	if (frameTimeAverage > 0)
-		_fps = 1000.0f / frameTimeAverage;
+		m_fps = 1000.0f / frameTimeAverage;
 	else
-		_fps = 60.0f;
+		m_fps = 60.0f;
 }

@@ -20,11 +20,11 @@ namespace Pixels2D
 		void calculateFPS();
 
 	private:
-		float _fps;
-		float _maxFPS;
-		float _frameTime;
+		float m_fps;
+		float m_maxFPS;
+		float m_frameTime;
 
-		GLuint _startTicks;
+		GLuint m_startTicks;
 	};
 }
 

@@ -4,10 +4,10 @@ using namespace std;
 
 namespace Pixels2D
 {
-	TextureCache ResourceManager::_textureCache;
+	TextureCache ResourceManager::m_textureCache;
 
 	GLTexture ResourceManager::getTexture(const std::string &texturePath)
 	{
-		return _textureCache.getTexture(texturePath);
+		return m_textureCache.getTexture(texturePath);
 	}
 }

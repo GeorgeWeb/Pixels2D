@@ -1,7 +1,7 @@
 #include "ImageLoader.h"
 #include "picoPNG.h"
 #include "IOManager.h"
-#include "Errors.h"
+#include "Pixels2DErrors.h"
 
 using namespace std;
 using namespace Pixels2D;

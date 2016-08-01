@@ -5,6 +5,7 @@
 #include <Pixels2D/GLSLProgram.h>
 #include <Pixels2D/Camera2D.h>
 #include <Pixels2D/InputManager.h>
+#include <Pixels2D/SpriteBatch.h>
 
 enum class GameState
 {
@@ -49,6 +50,9 @@ private:
 
 	// main camera
 	Pixels2D::Camera2D _camera;
+
+	// draws sprites
+	Pixels2D::SpriteBatch _spriteBatch;
 
 	// window dimensions
 	unsigned int _screenWidth, _screenHeight;

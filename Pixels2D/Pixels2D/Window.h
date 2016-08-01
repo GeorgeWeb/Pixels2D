@@ -22,14 +22,14 @@ namespace Pixels2D
 		~Window();
 
 		const int &create(const std::string &windowTitle, const unsigned int &screenWidth, const unsigned int &screenHeight, const unsigned int &currentFlags);
-		inline const int &getScreenWidth() { return _screenWidth; }
-		inline const int &getScreenHeight() { return _screenHeight; }
+		inline const int &getScreenWidth() { return m_screenWidth; }
+		inline const int &getScreenHeight() { return m_screenHeight; }
 
 		void swapBuffer();
 
 	private:
-		SDL_Window *_sdlWindow;
-		unsigned int _screenWidth, _screenHeight;
+		SDL_Window *m_sdlWindow;
+		unsigned int m_screenWidth, m_screenHeight;
 	};
 
 }

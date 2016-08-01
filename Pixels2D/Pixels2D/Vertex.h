@@ -19,7 +19,7 @@ namespace Pixels2D
 	struct ColorRGBA8
 	{
 		ColorRGBA8() : r(0), g(0), b(0), a(0) {}
-		ColorRGBA8(const GLubyte &R, const GLubyte &G, const GLubyte &B, const GLubyte &A)
+		ColorRGBA8(const GLubyte &R, const GLubyte &G, const GLubyte &B, const GLubyte &A) 
 			: r(R), g(G), b(B), a(A) {}
 
 		GLubyte r;

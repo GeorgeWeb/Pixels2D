@@ -6,27 +6,27 @@
 
 using namespace Pixels2D;
 
-Sprite::Sprite() : _vboID(0)
+Sprite::Sprite() : m_vboID(0)
 {}
 
 Sprite::~Sprite()
 {
 	// clean up
-	if (_vboID != 0)
-		glDeleteBuffers(1, &_vboID);
+	if (m_vboID != 0)
+		glDeleteBuffers(1, &m_vboID);
 }
 
 void Sprite::init(const float &x, const float &y, const float &width, const float &height, const std::string &texturePath)
 {
-	_x = x;
-	_y = x;
-	_width = width;
-	_height = height;
-	_texture = ResourceManager::getTexture(texturePath);
+	m_x = x;
+	m_y = x;
+	m_width = width;
+	m_height = height;
+	m_texture = ResourceManager::getTexture(texturePath);
 
 	// generate buffers
-	if (_vboID == 0)
-		glGenBuffers(1, &_vboID);
+	if (m_vboID == 0)
+		glGenBuffers(1, &m_vboID);
 
 	// 6 vertices
 	Vertex vertexData[6];
@@ -62,7 +62,7 @@ void Sprite::init(const float &x, const float &y, const float &width, const floa
 	vertexData[4].setColor(0, 255, 0, 255);
 
 	// bind the vertex buffer object
-	glBindBuffer(GL_ARRAY_BUFFER, _vboID);
+	glBindBuffer(GL_ARRAY_BUFFER, m_vboID);
 	// upload data to the gpu
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_STATIC_DRAW);
 	// unbind the buffer
@@ -72,10 +72,10 @@ void Sprite::init(const float &x, const float &y, const float &width, const floa
 void Sprite::draw()
 {
 	// bind the texture
-	glBindTexture(GL_TEXTURE_2D, _texture.id);
+	glBindTexture(GL_TEXTURE_2D, m_texture.id);
 
 	// bind the buffer
-	glBindBuffer(GL_ARRAY_BUFFER, _vboID);
+	glBindBuffer(GL_ARRAY_BUFFER, m_vboID);
 
 	// draw the 6 vertices to the screen
 	glDrawArrays(GL_TRIANGLES, 0, 6);

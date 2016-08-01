@@ -3,7 +3,6 @@
 
 #include <GL/glew.h>
 
-
 namespace Pixels2D
 {
 	struct GLTexture

@@ -1,5 +1,5 @@
 #include "Window.h"
-#include "Errors.h"
+#include "Pixels2DErrors.h"
 
 #include <SDL/SDL_image.h>
 
@@ -27,18 +27,18 @@ const int &Window::create(const std::string &windowTitle, const unsigned int &sc
 		flags |= SDL_WINDOW_BORDERLESS;
 
 	// create a window
-	_sdlWindow = SDL_CreateWindow(windowTitle.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screenWidth, screenHeight, flags);
+	m_sdlWindow = SDL_CreateWindow(windowTitle.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screenWidth, screenHeight, flags);
 	// check for window errors
-	if (_sdlWindow == nullptr)
+	if (m_sdlWindow == nullptr)
 		Errors::fatalError("SDL Window could not be created!");
 
 	// create icon
 	SDL_Surface *surface = IMG_Load("Icon/game.ico");
 	// attach the icon to the window pointer
-	SDL_SetWindowIcon(_sdlWindow, surface);
+	SDL_SetWindowIcon(m_sdlWindow, surface);
 
 	// store the SDL_GL context
-	SDL_GLContext glContext = SDL_GL_CreateContext(_sdlWindow);
+	SDL_GLContext glContext = SDL_GL_CreateContext(m_sdlWindow);
 	// check for SDL_GL context errors
 	if (glContext == nullptr)
 		Errors::fatalError("SDL_GL context could not be created!");
@@ -68,5 +68,5 @@ const int &Window::create(const std::string &windowTitle, const unsigned int &sc
 void Window::swapBuffer()
 {
 	// swap the buffer and drawn everything to the screen
-	SDL_GL_SwapWindow(_sdlWindow);
+	SDL_GL_SwapWindow(m_sdlWindow);
 }

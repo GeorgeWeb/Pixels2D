@@ -1,3 +1,5 @@
+#pragma once
+
 #ifndef SPRITEBATCH_HGUARD
 #define SPRITEBATCH_HGUARD
 
@@ -57,7 +59,7 @@ namespace Pixels2D
 	{
 	public:
 		RenderBatch(const GLuint &aOffset, const GLuint &aNumVertices, const GLuint &aTexture)
-			: offset(aOffset), numVertices(aNumVertices), texture(aTexture) {}
+			: offset(aOffset), numVertices(aNumVertices), texture(aTexture)	{}
 
 		GLuint offset;
 		GLuint numVertices;
@@ -71,7 +73,7 @@ namespace Pixels2D
 		~SpriteBatch();
 
 		void init();
-
+		
 		void begin(const GlyphSortType &sortType = GlyphSortType::TEXTURE);
 		void end();
 
@@ -79,7 +81,7 @@ namespace Pixels2D
 		void draw(const glm::vec4 &destRect, const glm::vec4 &uvRect, const GLuint &texture, const float &depth, const ColorRGBA8 &color);
 
 		void renderBatch();
-
+	
 	private:
 		void createVertexArray();
 		void createRenderBatches();
@@ -96,11 +98,11 @@ namespace Pixels2D
 		GlyphSortType _sortType;
 
 		// using this just for sorting
-		std::vector<Glyph*> _glyphPointers;
+		std::vector<Glyph*> m_glyphPointers;
 		// these are going to be the actual glyphs
-		std::vector<Glyph> _glyphs;
+		std::vector<Glyph> m_glyphs;
 
-		std::vector<RenderBatch> _renderBatches;
+		std::vector<RenderBatch> m_renderBatches;
 	};
 }
 

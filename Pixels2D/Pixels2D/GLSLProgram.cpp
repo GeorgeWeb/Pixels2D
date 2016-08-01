@@ -1,5 +1,5 @@
 #include "GLSLProgram.h"
-#include "Errors.h"
+#include "Pixels2DErrors.h"
 
 #include <fstream>
 #include <vector>
@@ -7,7 +7,7 @@
 using namespace std;
 using namespace Pixels2D;
 
-GLSLProgram::GLSLProgram() : _programID(0), _vertexShaderID(0), _fragmentShaderID(0), _numAttributes(0)
+GLSLProgram::GLSLProgram() : m_programID(0), m_vertexShaderID(0), m_fragmentShaderID(0), m_numAttributes(0)
 {}
 
 
@@ -18,49 +18,49 @@ GLSLProgram::~GLSLProgram()
 void GLSLProgram::compileShaders(const string &vertexShaderPath, const string &fragmentShaderPath)
 {
 	// get a shader program object
-	_programID = glCreateProgram();
+	m_programID = glCreateProgram();
 
 	// get a vertex shader object
-	_vertexShaderID = glCreateShader(GL_VERTEX_SHADER);
-	if (_vertexShaderID == 0) // check for errors
+	m_vertexShaderID = glCreateShader(GL_VERTEX_SHADER);
+	if (m_vertexShaderID == 0) // check for errors
 		Errors::fatalError("Vertex shader failed to be created!");
 	
 	// get a fragment shader object
-	_fragmentShaderID = glCreateShader(GL_FRAGMENT_SHADER);
-	if (_fragmentShaderID == 0) // check for errors
+	m_fragmentShaderID = glCreateShader(GL_FRAGMENT_SHADER);
+	if (m_fragmentShaderID == 0) // check for errors
 		Errors::fatalError("Fragment shader failed to be created!");
 
 	// compile each shader
-	compileShader(vertexShaderPath, _vertexShaderID);
-	compileShader(fragmentShaderPath, _fragmentShaderID);
+	compileShader(vertexShaderPath, m_vertexShaderID);
+	compileShader(fragmentShaderPath, m_fragmentShaderID);
 }
 
 void GLSLProgram::linkShaders()
 {
 	// attach shaders to program
-	glAttachShader(_programID, _vertexShaderID);
-	glAttachShader(_programID, _fragmentShaderID);
+	glAttachShader(m_programID, m_vertexShaderID);
+	glAttachShader(m_programID, m_fragmentShaderID);
 
 	// link program
-	glLinkProgram(_programID);
+	glLinkProgram(m_programID);
 
 	// check program - 'if shaders are linked'
 	GLint isLinked = 0;
-	glGetProgramiv(_programID, GL_LINK_STATUS, (int*)&isLinked); // could use safer 'reinterpret_cast<int*>' but cannot with GLint...
+	glGetProgramiv(m_programID, GL_LINK_STATUS, (int*)&isLinked); // could use safer 'reinterpret_cast<int*>' but cannot with GLint...
 	if (isLinked == GL_FALSE)
 	{
 		GLint maxLength = 0;
-		glGetProgramiv(_programID, GL_INFO_LOG_LENGTH, &maxLength);
+		glGetProgramiv(m_programID, GL_INFO_LOG_LENGTH, &maxLength);
 
 		// maxLength includes the NULL character
 		vector<GLchar> errorLog(maxLength);
-		glGetProgramInfoLog(_programID, maxLength, &maxLength, &errorLog[0]);
+		glGetProgramInfoLog(m_programID, maxLength, &maxLength, &errorLog[0]);
 
 		// don't need the program anymore
-		glDeleteProgram(_programID);
+		glDeleteProgram(m_programID);
 		// avoid leaks in shaders either
-		glDeleteShader(_vertexShaderID);
-		glDeleteShader(_fragmentShaderID);
+		glDeleteShader(m_vertexShaderID);
+		glDeleteShader(m_fragmentShaderID);
 
 		// print the infolog and exit with failure
 		printf("%s\n", &errorLog[0]);
@@ -68,22 +68,22 @@ void GLSLProgram::linkShaders()
 	}
 
 	// detach shaders after a successful link
-	glDetachShader(_programID, _vertexShaderID);
-	glDetachShader(_programID, _fragmentShaderID);
+	glDetachShader(m_programID, m_vertexShaderID);
+	glDetachShader(m_programID, m_fragmentShaderID);
 	// avoid leaks in shaders either
-	glDeleteShader(_vertexShaderID);
-	glDeleteShader(_fragmentShaderID);
+	glDeleteShader(m_vertexShaderID);
+	glDeleteShader(m_fragmentShaderID);
 }
 
 void GLSLProgram::addAttribute(const string &attributeName)
 {
-	glBindAttribLocation(_programID, _numAttributes++, attributeName.c_str());
+	glBindAttribLocation(m_programID, m_numAttributes++, attributeName.c_str());
 }
 
 GLuint GLSLProgram::getUniformLocation(const string &uniformName)
 {
 	// save uniform location
-	GLuint location = glGetUniformLocation(_programID, uniformName.c_str());
+	GLuint location = glGetUniformLocation(m_programID, uniformName.c_str());
 	// check for any errors/if exists
 	if (location == GL_INVALID_INDEX)
 		Errors::fatalError("Uniform " + uniformName + " not found in shader!");
@@ -94,9 +94,9 @@ GLuint GLSLProgram::getUniformLocation(const string &uniformName)
 void GLSLProgram::use()
 {
 	// bind shader program
-	glUseProgram(_programID);
+	glUseProgram(m_programID);
 	// enable vertex attributes
-	for (unsigned int i = 0; i < _numAttributes; i++)
+	for (unsigned int i = 0; i < m_numAttributes; i++)
 		glEnableVertexAttribArray(i);
 }
 
@@ -105,7 +105,7 @@ void GLSLProgram::unuse()
 	// unbind shader program
 	glUseProgram(0);
 	// disable vertex attributes
-	for (unsigned int i = 0; i < _numAttributes; i++)
+	for (unsigned int i = 0; i < m_numAttributes; i++)
 		glDisableVertexAttribArray(i);
 }
 
