@@ -1,5 +1,8 @@
 #ifndef TEXTURECACHE_HGUARD
 #define TEXTURECACHE_HGUARD
+#ifdef PRAGMA_ONCE
+	#pragma once
+#endif
 
 #include "GLTexture.h"
 

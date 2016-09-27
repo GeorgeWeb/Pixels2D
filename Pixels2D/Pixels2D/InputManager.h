@@ -1,5 +1,8 @@
 #ifndef INPUTMANAGER_HGUARD
 #define INPUTMANAGER_HGUARD
+#ifdef PRAGMA_ONCE
+	#pragma once
+#endif
 
 #include <unordered_map>
 #include <glm/glm.hpp>

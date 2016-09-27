@@ -1,5 +1,8 @@
 #ifndef VERTEX_HGUARD
 #define VERTEX_HGUARD
+#ifdef PRAGMA_ONCE
+	#pragma once
+#endif
 
 #include <GL/glew.h>
 
@@ -18,8 +21,8 @@ namespace Pixels2D
 	// rgba
 	struct ColorRGBA8
 	{
-		ColorRGBA8() : r(0), g(0), b(0), a(0) {}
-		ColorRGBA8(const GLubyte &R, const GLubyte &G, const GLubyte &B, const GLubyte &A) 
+		ColorRGBA8() : r(255), g(255), b(255), a(255) {}
+		ColorRGBA8(GLubyte R, GLubyte G, GLubyte B, GLubyte A) 
 			: r(R), g(G), b(B), a(A) {}
 
 		GLubyte r;
@@ -31,7 +34,7 @@ namespace Pixels2D
 	// uv
 	struct UV
 	{
-		UV() : u(0.0f), v(0.0f) {}
+		UV() : u(0.0f), v(1.0f) {}
 		UV(const float &U, const float &V) : u(U), v(V) {}
 
 		float u;

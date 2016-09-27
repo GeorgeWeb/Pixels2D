@@ -1,5 +1,8 @@
 #ifndef IOMANAGER_HGUARD
 #define IOMANAGER_HGUARD
+#ifdef PRAGMA_ONCE
+	#pragma once
+#endif
 
 #include <vector>
 

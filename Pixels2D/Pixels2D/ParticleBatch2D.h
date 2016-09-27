@@ -1,7 +1,8 @@
-#pragma once
-
 #ifndef PARTICLEBATCH2D_HGUARD
 #define PARTICLEBATCH2D_HGUARD
+#ifdef PRAGMA_ONCE
+	#pragma once
+#endif
 
 #include "Vertex.h"
 #include "SpriteBatch.h"
@@ -21,7 +22,7 @@ namespace Pixels2D
 		float width = 0.0f;
 	};
 
-	inline void defaultParticleupdate(Particle2D &particle, const float &deltaTime)
+	inline void defaultParticleUpdate(Particle2D &particle, const float &deltaTime)
 	{
 		particle.position += particle.velocity * deltaTime;
 	}
@@ -34,7 +35,7 @@ namespace Pixels2D
 
 		// initializes the particle batch
 		void init(const int &maxParticles, const float &decayRate, const GLuint &textureID,
-			std::function<void(Particle2D&, float)> updateFunc = defaultParticleupdate);
+			std::function<void(Particle2D&, float)> updateFunc = defaultParticleUpdate);
 
 		// updates the particle batch
 		void update(const float &deltaTime);

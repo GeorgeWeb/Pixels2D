@@ -1,5 +1,8 @@
 #ifndef RESOURCEMANAGER_HGUARD
 #define RESOURCEMANAGER_HGUARD
+#ifdef PRAGMA_ONCE
+	#pragma once
+#endif
 
 #include "TextureCache.h"
 

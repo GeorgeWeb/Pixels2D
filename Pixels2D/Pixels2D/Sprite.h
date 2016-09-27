@@ -1,5 +1,8 @@
 #ifndef SPRITE_HGUARD
 #define SPRITE_HGUARD
+#ifdef PRAGMA_ONCE
+	#pragma once
+#endif
 
 #include "GLTexture.h"
 

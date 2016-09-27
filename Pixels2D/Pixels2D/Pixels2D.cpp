@@ -12,7 +12,7 @@ namespace Pixels2D
 
 		// set double buffered window to avoid flickering
 		SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-		
+
 		return 0;
 	}
 }

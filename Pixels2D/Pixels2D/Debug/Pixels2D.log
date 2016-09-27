@@ -1,0 +1,35 @@
+﻿  Window.cpp
+f:\game_projects_c++\pixels2d\pixels2d\pixels2d\window.cpp(56): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
+  Timing.cpp
+f:\game_projects_c++\pixels2d\pixels2d\pixels2d\timing.cpp(31): warning C4244: 'initializing': conversion from 'Uint32' to 'float', possible loss of data
+f:\game_projects_c++\pixels2d\pixels2d\pixels2d\timing.cpp(33): warning C4244: 'argument': conversion from 'float' to 'Uint32', possible loss of data
+f:\game_projects_c++\pixels2d\pixels2d\pixels2d\timing.cpp(44): warning C4244: 'initializing': conversion from 'Uint32' to 'float', possible loss of data
+f:\game_projects_c++\pixels2d\pixels2d\pixels2d\timing.cpp(48): warning C4244: '=': conversion from 'Uint32' to 'float', possible loss of data
+  TextureCache.cpp
+  SpriteFont.cpp
+f:\game_projects_c++\pixels2d\pixels2d\pixels2d\spritefont.cpp(108): warning C4018: '<': signed/unsigned mismatch
+f:\game_projects_c++\pixels2d\pixels2d\pixels2d\spritefont.cpp(119): warning C4244: '*=': conversion from 'float' to 'unsigned char', possible loss of data
+  SpriteBatch.cpp
+f:\game_projects_c++\pixels2d\pixels2d\pixels2d\spritebatch.cpp(103): warning C4018: '<': signed/unsigned mismatch
+  Sprite.cpp
+  ResourceManager.cpp
+  Pixels2DErrors.cpp
+  Pixels2D.cpp
+  picoPNG.cpp
+  ParticleEngine2D.cpp
+  ParticleBatch2D.cpp
+  IOManager.cpp
+f:\game_projects_c++\pixels2d\pixels2d\pixels2d\iomanager.cpp(24): warning C4244: 'initializing': conversion from 'std::streamoff' to 'int', possible loss of data
+f:\game_projects_c++\pixels2d\pixels2d\pixels2d\iomanager.cpp(28): warning C4244: '-=': conversion from 'std::streamoff' to 'int', possible loss of data
+  InputManager.cpp
+  ImageLoader.cpp
+  GLSLProgram.cpp
+f:\game_projects_c++\pixels2d\pixels2d\pixels2d\glslprogram.cpp(99): warning C4018: '<': signed/unsigned mismatch
+f:\game_projects_c++\pixels2d\pixels2d\pixels2d\glslprogram.cpp(108): warning C4018: '<': signed/unsigned mismatch
+  Camera2D.cpp
+  AudioEngine.cpp
+  Generating Code...
+f:\game_projects_c++\pixels2d\pixels2d\pixels2d\camera2d.cpp(48): warning C4172: returning address of local variable or temporary: screenCoords
+f:\game_projects_c++\pixels2d\pixels2d\pixels2d\spritebatch.cpp(69): warning C4172: returning address of local variable or temporary
+f:\game_projects_c++\pixels2d\pixels2d\pixels2d\window.cpp(65): warning C4172: returning address of local variable or temporary
+  Pixels2D.vcxproj -> F:\Game_Projects_C++\Pixels2D\Pixels2D\Debug\Pixels2D.lib

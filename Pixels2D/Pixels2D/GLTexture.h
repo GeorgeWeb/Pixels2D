@@ -1,5 +1,8 @@
 #ifndef GLTEXTURE_HGUARD
 #define GLTEXTURE_HGUARD
+#ifdef PRAGMA_ONCE
+	#pragma once
+#endif
 
 #include <GL/glew.h>
 

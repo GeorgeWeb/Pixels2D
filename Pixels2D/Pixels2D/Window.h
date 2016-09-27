@@ -1,5 +1,8 @@
 #ifndef WINDOW_HGUARD
 #define WINDOW_HGUARD
+#ifdef PRAGMA_ONCE
+	#pragma once
+#endif
 
 #include <SDL/SDL.h>
 #include <GL/glew.h>

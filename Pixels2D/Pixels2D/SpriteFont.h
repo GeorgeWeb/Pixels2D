@@ -1,7 +1,8 @@
-#pragma once
-
 #ifndef SPRITEFONT_HGUARD
 #define SPRITEFONT_HGUARD
+#ifdef PRAGMA_ONCE
+	#pragma once
+#endif
 
 #include <SDL/SDL_ttf.h>
 

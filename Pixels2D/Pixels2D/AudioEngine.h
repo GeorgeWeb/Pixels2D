@@ -1,7 +1,8 @@
-#pragma once
-
 #ifndef AUDIOENGINE_HGUARD
 #define AUDIOENGINE_HGUARD
+#ifdef PRAGMA_ONCE
+	#pragma once
+#endif
 
 #include <SDL/SDL_mixer.h>
 

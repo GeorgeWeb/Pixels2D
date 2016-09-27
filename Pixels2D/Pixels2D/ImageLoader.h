@@ -1,5 +1,8 @@
 #ifndef IMAGELOADER_HGUARD
 #define IMAGELOADER_HGUARD
+#ifdef PRAGMA_ONCE
+	#pragma once
+#endif
 
 #include "GLTexture.h"
 

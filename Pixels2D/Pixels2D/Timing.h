@@ -1,5 +1,8 @@
 #ifndef TIMING_HGUARD
 #define TIMING_HGUARD
+#ifdef PRAGMA_ONCE
+	#pragma once
+#endif
 
 #include <GL/glew.h>
 

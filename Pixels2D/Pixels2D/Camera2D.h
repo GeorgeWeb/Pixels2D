@@ -1,7 +1,8 @@
-#pragma once
-
 #ifndef CAMERA2D_HGUARD
 #define CAMERA2D_HGUARD
+#ifdef PRAGMA_ONCE
+	#pragma once
+#endif
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp> // glm::ortho

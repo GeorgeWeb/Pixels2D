@@ -1,5 +1,8 @@
 #ifndef GLSLPROGRAM_HGUARD
 #define GLSLPROGRAM_HGUARD
+#ifdef PRAGMA_ONCE
+	#pragma once
+#endif
 
 #include <GL/glew.h>
 

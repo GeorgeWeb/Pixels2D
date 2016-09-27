@@ -1,0 +1,7 @@
+﻿  MainGame.cpp
+f:\game_projects_c++\pixels2d\pixels2d\testdemo\maingame.cpp(41): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
+f:\game_projects_c++\pixels2d\pixels2d\testdemo\maingame.cpp(99): warning C4244: 'argument': conversion from 'Sint32' to 'const float', possible loss of data
+  main.cpp
+  Generating Code...
+  TestDemo.vcxproj -> F:\Game_Projects_C++\Pixels2D\Pixels2D\Debug\TestDemo.exe
+  TestDemo.vcxproj -> F:\Game_Projects_C++\Pixels2D\Pixels2D\Debug\TestDemo.pdb (Partial PDB)
