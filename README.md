@@ -1,3 +1,3 @@
 # Pixels2D
-### A 2D experimental game engine 
+### An experimental 2D game engine 
 Developed in C/C++ and OpenGL using SDL and trying out different libraries for textures, fonts and audio...
