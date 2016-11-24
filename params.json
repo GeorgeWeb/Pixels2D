@@ -1,0 +1,6 @@
+{
+  "name": "Pixels2D",
+  "tagline": "Pixels2D is my first, experimental 2D game engine from developed scratch / C++ and OpenGL",
+  "body": "### An experimental 2D game engine\r\n\r\n# Developed in C/C++ and OpenGL using SDL and trying out different libraries for textures, fonts and audio...\r\n\r\n### Support or Contact\r\nCheck out [documentation](http://georgim.com) or [contact support](http://georgim.com/system/#home/contacts).\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
