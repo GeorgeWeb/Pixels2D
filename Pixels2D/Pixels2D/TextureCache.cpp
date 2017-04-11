@@ -7,13 +7,11 @@ using namespace std;
 using namespace Pixels2D;
 
 TextureCache::TextureCache()
-{
-}
+{ /* Empty */ }
 
 
 TextureCache::~TextureCache()
-{
-}
+{ /* Empty */ }
 
 GLTexture TextureCache::getTexture(const string &texturePath)
 {
